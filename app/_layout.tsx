@@ -4,24 +4,22 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { Router } from "@/components/router";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const { background } = useThemeColor();
 
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    GeneralSans: require("../assets/fonts/GeneralSans-Regular.otf"),
   });
 
   useEffect(() => {
@@ -36,23 +34,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack
-        screenOptions={{
-          title: "Quiz",
-          headerShadowVisible: false,
-          contentStyle: { backgroundColor: background },
-          headerStyle: {
-            backgroundColor: background,
-          },
-        }}
-      >
-        <Stack.Screen
-          name="quiz"
-          options={{
-            title: "Quiz",
-          }}
-        />
-      </Stack>
+      <Router />
       <StatusBar style="auto" />
     </ThemeProvider>
   );
