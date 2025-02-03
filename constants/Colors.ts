@@ -5,14 +5,20 @@
 
 export const Colors = {
   light: {
-    text: "#11181C",
+    text: "#000000",
+    secondaryText: "#191D63",
+    disabledText: "#757575",
     background: "#EDE8E3",
+    success: "#31CD63",
     icon: "#687076",
     tabIconDefault: "#687076",
   },
   dark: {
     text: "#ECEDEE",
-    background: "#151718",
+    secondaryText: "#191D63",
+    disabledText: "#757575",
+    background: "#4A4642",
+    success: "#31CD63",
     icon: "#9BA1A6",
     tabIconDefault: "#9BA1A6",
   },
