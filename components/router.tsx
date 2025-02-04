@@ -1,11 +1,20 @@
+import { QUESTION_POINT } from "@/constants/common";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Stack, useNavigation } from "expo-router";
-import { Alert, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 
 const closeImage = require("../assets/images/close.png");
+const pointImage = require("../assets/images/point.png");
 
 export const Router = () => {
-  const { background } = useThemeColor();
+  const { background, text, secondaryText } = useThemeColor();
 
   const navigation = useNavigation();
 
@@ -13,8 +22,15 @@ export const Router = () => {
     <Stack
       screenOptions={{
         headerShadowVisible: false,
+        headerTintColor: text,
+        headerTitleStyle: {
+          fontSize: 18,
+          fontWeight: 800,
+        },
         contentStyle: {
           backgroundColor: background,
+          padding: 20,
+          paddingBottom: 58,
         },
         headerStyle: {
           backgroundColor: background,
@@ -26,21 +42,20 @@ export const Router = () => {
         options={{
           title: "Quiz App",
           headerLeft: () => <></>,
-          headerTitleStyle: {
-            fontSize: 18,
-            fontWeight: 800,
-          },
         }}
       />
       <Stack.Screen
         name="quiz"
         options={{
           title: "Quiz",
-          headerTitleStyle: {
-            fontSize: 18,
-            fontWeight: 800,
-          },
-          headerLeft: () => <></>,
+          headerLeft: () => (
+            <View style={styles.quizPointContainer}>
+              <Image source={pointImage} style={styles.quizPointImage} />
+              <Text style={[styles.quizPointText, { color: secondaryText }]}>
+                {QUESTION_POINT}
+              </Text>
+            </View>
+          ),
           gestureEnabled: false,
           headerRight: () => (
             <TouchableOpacity
@@ -71,6 +86,14 @@ export const Router = () => {
         options={{
           title: "Quiz Result",
           headerLeft: () => <></>,
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={navigation.goBack}
+              style={styles.closeButton}
+            >
+              <Image source={closeImage} />
+            </TouchableOpacity>
+          ),
         }}
       />
     </Stack>
@@ -86,5 +109,25 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  quizPointContainer: {
+    height: 22,
+    borderRadius: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    backgroundColor: "white",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 4,
+  },
+  quizPointImage: {
+    width: 14,
+    height: 14,
+  },
+  quizPointText: {
+    fontSize: 14,
+    fontWeight: 700,
+    marginTop: -2,
   },
 });
