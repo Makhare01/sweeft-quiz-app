@@ -1,5 +1,5 @@
 import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 
 type ThemeColor = typeof Colors.light & typeof Colors.dark;
 

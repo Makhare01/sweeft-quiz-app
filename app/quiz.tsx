@@ -1,10 +1,10 @@
 import { getQuestions } from "@/api";
 import { Difficulty } from "@/api/quiz.schema";
 import { Questions } from "@/components/questions";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { useQuery } from "@tanstack/react-query";
 import { useLocalSearchParams } from "expo-router";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { match, P } from "ts-pattern";
 
 const QuizView = () => {
@@ -21,17 +21,13 @@ const QuizView = () => {
   const { lightGreen } = useThemeColor();
 
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
+    <View style={styles.container}>
       {match($questions)
         .with({ isLoading: true }, () => (
           <ActivityIndicator
             size="large"
             color={lightGreen}
-            style={{ flex: 1 }}
+            style={styles.container}
           />
         ))
         .with({ isError: true, error: P.select() }, (error) => (
@@ -41,11 +37,7 @@ const QuizView = () => {
           { isSuccess: true, data: P.select() },
           ({ results: questions }) => {
             return (
-              <View
-                style={{
-                  flex: 1,
-                }}
-              >
+              <View style={styles.container}>
                 <Questions questions={questions} />
               </View>
             );
@@ -57,3 +49,9 @@ const QuizView = () => {
 };
 
 export default QuizView;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

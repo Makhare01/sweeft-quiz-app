@@ -1,4 +1,4 @@
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Svg, { Rect } from "react-native-svg";
@@ -21,7 +21,7 @@ export const ProgressBar = ({ progress, total }: Props) => {
           y="0"
           width="100%"
           height="12"
-          rx="6" // Rounded corners
+          rx="6"
           ry="6"
           fill="#F4F1EC"
         />

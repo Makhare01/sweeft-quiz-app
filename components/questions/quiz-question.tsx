@@ -1,4 +1,4 @@
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { StyleSheet, Text, View } from "react-native";
 import parse from "html-react-parser";
 import { Answer } from "./answer";

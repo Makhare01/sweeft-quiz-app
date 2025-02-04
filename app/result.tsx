@@ -1,6 +1,6 @@
 import { CustomButton } from "@/components/ui/custom-button";
 import { QUESTION_POINT } from "@/constants/common";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import {
   Image,
@@ -21,7 +21,7 @@ const ResultItem = ({
 }: {
   imageSrc?: ImageSourcePropType;
   text: string;
-  point: number;
+  point: string;
 }) => {
   const { text: textColor } = useThemeColor();
 
@@ -62,18 +62,18 @@ const ResultView = () => {
           <ResultItem
             imageSrc={moneyImage}
             text="Score Gained"
-            point={Number(corrects) * QUESTION_POINT}
+            point={`${Number(corrects) * QUESTION_POINT}`}
           />
           <View style={[styles.divider, { borderColor: background }]} />
           <ResultItem
             imageSrc={checkImage}
-            text="Correct predictions"
-            point={Number(corrects)}
+            text="Correct answers"
+            point={`${total}/${corrects}`}
           />
         </View>
       </View>
 
-      <CustomButton title="Start Again" onPress={() => router.push("/")} />
+      <CustomButton title="Start new quiz" onPress={() => router.push("/")} />
     </View>
   );
 };
