@@ -5,21 +5,17 @@
 
 export const Colors = {
   light: {
-    text: "#000000",
+    text: "#060710",
+    white: "#F4F3F6",
     secondaryText: "#191D63",
     disabledText: "#757575",
     background: "#EDE8E3",
     success: "#31CD63",
+    lightGreen: "#45C486",
     icon: "#687076",
     tabIconDefault: "#687076",
   },
   dark: {
-    text: "#ECEDEE",
-    secondaryText: "#191D63",
-    disabledText: "#757575",
-    background: "#4A4642",
-    success: "#31CD63",
-    icon: "#9BA1A6",
-    tabIconDefault: "#9BA1A6",
+    // add dark mode colors here
   },
 };
