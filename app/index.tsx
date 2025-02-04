@@ -1,5 +1,5 @@
 import { CustomButton } from "@/components/ui/custom-button";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/hooks/use-theme-color";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { Text, View, StyleSheet } from "react-native";
 import { useState } from "react";
@@ -23,25 +23,13 @@ const MainView = () => {
   });
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "space-between",
-        alignItems: "stretch",
-      }}
-    >
+    <View style={styles.container}>
       <View>
         <Text style={[styles.header, { color: secondaryText }]}>
           Welcome to the quiz app
         </Text>
 
-        <View
-          style={{
-            flexDirection: "column",
-            alignItems: "stretch",
-            gap: 20,
-          }}
-        >
+        <View style={styles.inputsContainer}>
           <View>
             <Text style={styles.label}>Category</Text>
             <DropdownComponent
@@ -99,6 +87,16 @@ const MainView = () => {
 export default MainView;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "stretch",
+  },
+  inputsContainer: {
+    flexDirection: "column",
+    alignItems: "stretch",
+    gap: 20,
+  },
   header: {
     fontSize: 14,
     fontWeight: 600,

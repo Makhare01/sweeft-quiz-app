@@ -1,6 +1,6 @@
 import { QUESTION_POINT } from "@/constants/common";
-import { useThemeColor } from "@/hooks/useThemeColor";
-import { Stack, useNavigation } from "expo-router";
+import { useThemeColor } from "@/hooks/use-theme-color";
+import { Stack, useNavigation, useRouter } from "expo-router";
 import {
   Alert,
   Image,
@@ -17,6 +17,7 @@ export const Router = () => {
   const { background, text, secondaryText } = useThemeColor();
 
   const navigation = useNavigation();
+  const router = useRouter();
 
   return (
     <Stack
@@ -88,7 +89,7 @@ export const Router = () => {
           headerLeft: () => <></>,
           headerRight: () => (
             <TouchableOpacity
-              onPress={navigation.goBack}
+              onPress={() => router.push("/")}
               style={styles.closeButton}
             >
               <Image source={closeImage} />

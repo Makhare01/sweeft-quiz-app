@@ -41,7 +41,9 @@ export const Questions = ({ questions }: Props) => {
           }
 
           if (currentQuestionIndex === questions.length - 1) {
-            router.push(`/result?corrects=${corrects}`);
+            router.push(
+              `/result?corrects=${corrects}&total=${questions.length}`
+            );
 
             return;
           }
